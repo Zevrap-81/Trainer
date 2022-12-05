@@ -28,7 +28,7 @@ class DataParameters(BaseParameters):
     data_dir: str= r"data"
     split_ratio: float= 0.8
     n_train: int= 1000
-
+    ckpt_base_dir:str= r".."
     @property
     def train_size(self):
         return int(self.n_train*self.split_ratio)

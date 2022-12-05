@@ -34,7 +34,7 @@ class DataParameters(BaseParameters):
         return int(self.n_train*self.split_ratio)
 
 @dataclass
-class Hyperparameters(BaseParameters):
+class HyperParameters(BaseParameters):
 
     model_name: str = None
     in_channel: int= 3

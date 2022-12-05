@@ -29,7 +29,7 @@ class CommonBase:
         self.params.hyper.model_name= type(self.model).__name__
 
         self.time_ext= now()
-        self.base_dir= "saved_data"
+        self.base_dir= rf"{self.params.data.ckpt_base_dir}/saved_data"
         self.log_path = rf"{self.base_dir}/{self.time_ext}/logs"
         self.checkpoint_path = rf"{self.base_dir}/{self.time_ext}/checkpoints"
         self.params.viz.dir = rf"{self.base_dir}/{self.time_ext}/visulaizations"
@@ -193,7 +193,7 @@ class TrainerBase(CommonBase):
             for i, data in enumerate(tloader):
                 loss, y_PRED = self.test_step(data)
                 tloader.set_postfix(loss=loss, refresh=False)
-                writer.add_scalar('test loss', loss, i)
+                writer.add_scalars('test loss', loss, i)
                 if visualize and i == j:
                     self.viz_step(i, y_PRED, data)
                     j = sample_next()
